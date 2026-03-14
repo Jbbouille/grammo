@@ -1,5 +1,8 @@
 # -*- mode: python ; coding: utf-8 -*-
 import os
+import sys
+
+icon = "icon.icns" if sys.platform == "darwin" else "icon.ico"
 
 grammalecte_src = os.path.join(os.path.dirname(SPEC), "Grammalecte-fr-v2.3.0")
 
@@ -45,13 +48,13 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon="icon.ico",
+    icon=icon,
 )
 
 # macOS : créer un .app bundle
 app = BUNDLE(
     exe,
     name="Correcteur Grammalecte.app",
-    icon="icon.ico",
+    icon=icon,
     bundle_identifier="fr.grammalecte.correcteur",
 )

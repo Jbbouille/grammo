@@ -45,12 +45,13 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    icon="icon.ico",
 )
 
 # macOS : créer un .app bundle
 app = BUNDLE(
     exe,
     name="Correcteur Grammalecte.app",
-    icon=None,
+    icon="icon.ico",
     bundle_identifier="fr.grammalecte.correcteur",
 )

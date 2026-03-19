@@ -48,8 +48,14 @@ jobs:
       - name: Build with PyInstaller
         run: pyinstaller build.spec
 
-      - name: Archive (Windows / Linux)
-        if: runner.os != 'macOS'
+      - name: Archive (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          Compress-Archive -Path "dist\${{ matrix.artifact }}" -DestinationPath "${{ matrix.archive }}"
+
+      - name: Archive (Linux)
+        if: runner.os == 'Linux'
         shell: bash
         run: |
           cd dist
